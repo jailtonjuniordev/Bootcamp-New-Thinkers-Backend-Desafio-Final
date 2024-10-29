@@ -11,7 +11,7 @@ public record UpdateMunicipioDTO(
         @NotNull(message = "O código do municipio não deve ser nulo!")
         Long codigoMunicipio,
 
-        UF codigoUF,
+        Long codigoUF,
 
         @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O nome do municipio deve conter apenas letras e espaços!")
         String nome,

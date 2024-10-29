@@ -1,8 +1,10 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,9 +28,10 @@ public class Municipio {
     @Column(name = "codigo_municipio", nullable = false, unique = true)
     private Long codigoMunicipio;
 
-    @JoinColumn(name = "codigo_uf", referencedColumnName = "codigoUF")
+    @JoinColumn(name = "codigo_uf", referencedColumnName = "codigo_uf", nullable = false)
     @ManyToOne
-    @JsonManagedReference
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codigoUF")
+    @JsonIdentityReference(alwaysAsId = true)
     private UF codigoUF;
 
     @Column(nullable = false, unique = true)
@@ -36,6 +39,8 @@ public class Municipio {
     private String nome;
 
     @Column(nullable = false)
+    @Max(value = 2, message = "O status deve ser apenas 1 ou 2.")
+    @Min(value = 1, message = "O status deve ser apenas 1 ou 2.")
     private Integer status;
 
     @CreationTimestamp
