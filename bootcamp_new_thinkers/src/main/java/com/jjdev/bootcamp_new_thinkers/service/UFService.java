@@ -61,6 +61,10 @@ public class UFService {
         }
     }
 
+    public UF recuperarUFPorId(Long codigoUF) {
+        return ufRepository.findById(codigoUF).orElseThrow(() -> new CustomException("UF não encontrada!", HttpStatus.NOT_FOUND, null));
+    }
+
     private void verificarCamposDuplicados(String nome, String sigla) {
         List<String> camposDuplicados = new ArrayList<>();
 

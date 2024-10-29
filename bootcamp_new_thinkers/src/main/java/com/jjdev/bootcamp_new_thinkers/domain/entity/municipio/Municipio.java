@@ -1,6 +1,7 @@
-package com.jjdev.bootcamp_new_thinkers.domain.entity.uf;
+package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio;
 
-import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.Municipio;
+import com.fasterxml.jackson.annotation.*;
+import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -13,36 +14,34 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ufs")
-public class UF {
+@Table(name = "municipios")
+public class Municipio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "codigo_uf", nullable = false, unique = true)
-    private Long codigoUF;
+    @Column(name = "codigo_municipio", nullable = false, unique = true)
+    private Long codigoMunicipio;
 
-    @Column(unique = true, nullable = false, length = 2)
-    @Pattern(regexp = "^[A-Za-z]{2}$", message = "A sigla do estado deve conter apenas duas letras!")
-    private String sigla;
+    @JoinColumn(name = "codigo_uf", referencedColumnName = "codigo_uf", nullable = false)
+    @ManyToOne
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codigoUF")
+    @JsonIdentityReference(alwaysAsId = true)
+    private UF codigoUF;
 
-    @Column(unique = true, nullable = false)
-    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O nome do estado deve conter apenas letras e espaços!")
+    @Column(nullable = false, unique = true)
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O nome do municipio deve conter apenas letras e espaços!")
     private String nome;
 
     @Column(nullable = false)
     @Max(value = 2, message = "O status deve ser apenas 1 ou 2.")
     @Min(value = 1, message = "O status deve ser apenas 1 ou 2.")
     private Integer status;
-
-    @OneToMany(mappedBy = "codigoUF", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Municipio> municipios;
 
     @CreationTimestamp
     @Column(name = "criado_em")
