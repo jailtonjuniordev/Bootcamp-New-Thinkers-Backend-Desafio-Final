@@ -4,7 +4,7 @@ import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.Municipio;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.dto.CreateMunicipioDTO;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.dto.UpdateMunicipioDTO;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
-import com.jjdev.bootcamp_new_thinkers.domain.repository.uf.MunicipioRepository;
+import com.jjdev.bootcamp_new_thinkers.domain.repository.MunicipioRepository;
 import com.jjdev.bootcamp_new_thinkers.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

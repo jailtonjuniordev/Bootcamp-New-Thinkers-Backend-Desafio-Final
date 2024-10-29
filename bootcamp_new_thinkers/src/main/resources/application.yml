@@ -14,4 +14,4 @@ spring:
       ddl-auto: create-drop
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.OracleDialect # Tive problema nesse dialect do demonio - Lembrar de sempre colocar generico sem especificar a versão.
+        dialect: org.hibernate.dialect.OracleDialect # Tive problema nesse dialect do demonio - Lembrar de sempre colocar generico sem especificar a versï¿½o.

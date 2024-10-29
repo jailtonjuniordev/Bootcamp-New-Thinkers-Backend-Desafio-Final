@@ -3,7 +3,7 @@ package com.jjdev.bootcamp_new_thinkers.service;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.dto.CreateUFDTO;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.dto.UpdateUFDTO;
-import com.jjdev.bootcamp_new_thinkers.domain.repository.uf.UFRepository;
+import com.jjdev.bootcamp_new_thinkers.domain.repository.UFRepository;
 import com.jjdev.bootcamp_new_thinkers.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

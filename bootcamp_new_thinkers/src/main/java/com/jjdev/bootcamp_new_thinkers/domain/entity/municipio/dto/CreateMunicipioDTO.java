@@ -1,8 +1,11 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.dto;
 
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
+import org.springframework.core.annotation.Order;
 
+@Schema(description = "DTO de criação de municipios")
 public record CreateMunicipioDTO(
         @NotNull(message = "O código do estado não pode ser vazio!")
         Long codigoUF,

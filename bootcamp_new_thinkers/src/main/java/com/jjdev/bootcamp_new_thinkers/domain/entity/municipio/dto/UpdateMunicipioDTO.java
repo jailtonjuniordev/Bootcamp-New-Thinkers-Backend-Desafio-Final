@@ -1,11 +1,13 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.dto;
 
-import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.core.annotation.Order;
 
+@Schema(description = "DTO de atualização de municipios")
 public record UpdateMunicipioDTO(
 
         @NotNull(message = "O código do municipio não deve ser nulo!")

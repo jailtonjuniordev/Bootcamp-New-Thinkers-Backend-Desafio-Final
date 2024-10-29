@@ -1,7 +1,10 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.uf.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
+import org.springframework.core.annotation.Order;
 
+@Schema(description = "DTO de criação de UF (Estados)")
 public record CreateUFDTO(
 
         @NotBlank(message = "O nome da sigla do estado não pode ser vazio!")

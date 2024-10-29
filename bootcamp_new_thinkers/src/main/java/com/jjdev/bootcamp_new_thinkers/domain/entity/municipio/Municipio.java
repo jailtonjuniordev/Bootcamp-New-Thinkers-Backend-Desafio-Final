@@ -2,6 +2,7 @@ package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio;
 
 import com.fasterxml.jackson.annotation.*;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.core.annotation.Order;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +23,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "municipios")
+@Schema(description = "Entidade de Municipios")
 public class Municipio {
 
     @Id
