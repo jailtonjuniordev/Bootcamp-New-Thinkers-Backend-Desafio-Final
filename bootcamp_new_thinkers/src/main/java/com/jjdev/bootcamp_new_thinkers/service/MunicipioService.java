@@ -86,7 +86,7 @@ public class MunicipioService {
         return municipioRepository.findAll();
     }
 
-    public Municipio recuperarMunicipio(Long codigoMunicipio) {
+    public Municipio recuperarMunicipioPorId(Long codigoMunicipio) {
         return municipioRepository.findById(codigoMunicipio).orElseThrow(() -> new CustomException("Municipio não encontrado!", HttpStatus.NOT_FOUND, null));
     }
 }
