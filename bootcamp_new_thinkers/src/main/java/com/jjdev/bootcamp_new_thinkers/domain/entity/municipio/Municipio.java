@@ -1,8 +1,6 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.bairro.Bairro;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,8 +34,7 @@ public class Municipio {
 
     @JoinColumn(name = "codigo_uf", referencedColumnName = "codigo_uf", nullable = false)
     @ManyToOne
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codigoUF")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnoreProperties(value = "municipios")
     private UF codigoUF;
 
     @Column(nullable = false, unique = true)
@@ -50,13 +47,14 @@ public class Municipio {
     private Integer status;
 
     @OneToMany(mappedBy = "codigoMunicipio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "codigoMunicipio")
     private List<Bairro> bairros;
 
     @CreationTimestamp
     @Column(name = "criado_em")
-    private LocalDateTime createdAt;
+    private LocalDateTime criadoEm;
 
     @UpdateTimestamp
     @Column(name = "atualizado_em")
-    private LocalDateTime updatedAt;
+    private LocalDateTime AtualizadoEm;
 }
