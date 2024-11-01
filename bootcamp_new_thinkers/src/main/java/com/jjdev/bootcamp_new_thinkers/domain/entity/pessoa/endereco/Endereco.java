@@ -1,6 +1,8 @@
-package com.jjdev.bootcamp_new_thinkers.domain.entity.endereco;
+package com.jjdev.bootcamp_new_thinkers.domain.entity.pessoa.endereco;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.bairro.Bairro;
+import com.jjdev.bootcamp_new_thinkers.domain.entity.pessoa.Pessoa;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,6 +32,11 @@ public class Endereco {
     @JoinColumn(nullable = false, name = "codigo_bairro")
     private Bairro codigoBairro;
 
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "codigo_pessoa")
+    @JsonIgnoreProperties(value = "codigoPessoa")
+    private Pessoa codigoPessoa;
+
     @Column(name = "nome_rua", nullable = false)
     private String nomeRua;
 
@@ -44,9 +51,9 @@ public class Endereco {
 
     @CreationTimestamp
     @Column(name = "criado_em")
-    private LocalDateTime createdAt;
+    private LocalDateTime criadoEm;
 
     @UpdateTimestamp
     @Column(name = "atualizado_em")
-    private LocalDateTime updatedAt;
+    private LocalDateTime atualizadoEm;
 }

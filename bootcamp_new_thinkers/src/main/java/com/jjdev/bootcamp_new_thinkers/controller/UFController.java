@@ -44,6 +44,6 @@ public class UFController {
         parametros.put("nome", nome);
         parametros.put("status", status);
 
-        return ResponseEntity.ok().body(ufService.listarUF(parametros));
+        return new ResponseEntity<>(ufService.listarUF(parametros), HttpStatus.OK);
     }
 }

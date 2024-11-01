@@ -152,6 +152,5 @@ public class UFService {
         if (!camposErrados.isEmpty()) {
             throw new CustomException("Existem campos inválidos detectados!", HttpStatus.BAD_REQUEST, camposErrados);
         }
-
     }
 }
