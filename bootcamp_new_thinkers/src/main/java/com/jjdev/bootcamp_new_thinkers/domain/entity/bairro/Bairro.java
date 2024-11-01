@@ -1,8 +1,8 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.bairro;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.Municipio;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -34,8 +34,7 @@ public class Bairro {
 
     @JoinColumn(name = "codigo_municipio", referencedColumnName = "codigo_municipio", nullable = false)
     @ManyToOne
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "codigoMunicipio")
-    @JsonIdentityReference(alwaysAsId = true)
+    @JsonIgnoreProperties(value = "bairros")
     private Municipio codigoMunicipio;
 
     @Column(nullable = false, unique = true)
@@ -49,9 +48,9 @@ public class Bairro {
 
     @CreationTimestamp
     @Column(name = "criado_em")
-    private LocalDateTime createdAt;
+    private LocalDateTime criadoEm;
 
     @UpdateTimestamp
     @Column(name = "atualizado_em")
-    private LocalDateTime updatedAt;
+    private LocalDateTime AtualizadoEm;
 }

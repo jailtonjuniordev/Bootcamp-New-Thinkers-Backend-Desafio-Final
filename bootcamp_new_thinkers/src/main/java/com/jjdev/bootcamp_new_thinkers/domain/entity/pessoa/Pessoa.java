@@ -1,8 +1,7 @@
-package com.jjdev.bootcamp_new_thinkers.domain.entity.municipio;
+package com.jjdev.bootcamp_new_thinkers.domain.entity.pessoa;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.jjdev.bootcamp_new_thinkers.domain.entity.bairro.Bairro;
-import com.jjdev.bootcamp_new_thinkers.domain.entity.uf.UF;
+import com.jjdev.bootcamp_new_thinkers.domain.entity.pessoa.endereco.Endereco;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
@@ -23,32 +22,40 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "municipios")
-@Schema(description = "Entidade de Municipios")
-public class Municipio {
+@Table(name = "pessoas")
+@Schema(description = "Entidade de Pessoa")
+public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "codigo_municipio", nullable = false, unique = true)
-    private Long codigoMunicipio;
+    private Long codigoPessoa;
 
-    @JoinColumn(name = "codigo_uf", referencedColumnName = "codigo_uf", nullable = false)
-    @ManyToOne
-    @JsonIgnoreProperties(value = "municipios")
-    private UF codigoUF;
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O nome da pessoa deve conter apenas letras e espaços!")
+    @Column(nullable = false)
+    private String nome;
+
+    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O sobrenome da pessoa deve conter apenas letras e espaços!")
+    @Column(nullable = false)
+    private String sobrenome;
+
+    @Column(nullable = false)
+    @Min(value = 1, message = "A idade precisa ser maior ou igual a 1.")
+    private Integer idade;
 
     @Column(nullable = false, unique = true)
-    @Pattern(regexp = "^[A-Za-zÀ-ÖØ-öø-ÿ]+(\\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$", message = "O nome do municipio deve conter apenas letras e espaços!")
-    private String nome;
+    private String login;
+
+    @Column(nullable = false)
+    private String senha;
 
     @Column(nullable = false)
     @Max(value = 2, message = "O status deve ser apenas 1 ou 2.")
     @Min(value = 1, message = "O status deve ser apenas 1 ou 2.")
     private Integer status;
 
-    @OneToMany(mappedBy = "codigoMunicipio", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties(value = "codigoMunicipio")
-    private List<Bairro> bairros;
+    @OneToMany(mappedBy = "codigoPessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "codigoPessoa")
+    private List<Endereco> enderecos;
 
     @CreationTimestamp
     @Column(name = "criado_em")

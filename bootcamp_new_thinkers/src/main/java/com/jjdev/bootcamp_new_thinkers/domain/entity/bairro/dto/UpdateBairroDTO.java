@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-@Schema(description = "DTO de atualização de municipios")
+@Schema(description = "DTO de atualização de bairros")
 public record UpdateBairroDTO(
 
         @NotNull(message = "O código do municipio não deve ser nulo!")

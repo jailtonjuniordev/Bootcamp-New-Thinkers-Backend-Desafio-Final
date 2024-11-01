@@ -1,5 +1,6 @@
 package com.jjdev.bootcamp_new_thinkers.domain.entity.uf;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jjdev.bootcamp_new_thinkers.domain.entity.municipio.Municipio;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -12,7 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.core.annotation.Order;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,13 +45,14 @@ public class UF {
     private Integer status;
 
     @OneToMany(mappedBy = "codigoUF", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(value = "codigoUF")
     private List<Municipio> municipios;
 
     @CreationTimestamp
     @Column(name = "criado_em")
-    private LocalDateTime createdAt;
+    private LocalDateTime criadoEm;
 
     @UpdateTimestamp
     @Column(name = "atualizado_em")
-    private LocalDateTime updatedAt;
+    private LocalDateTime atualizadoEm;
 }
