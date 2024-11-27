@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "190afb71-709e-4103-bcc3-21e7b81766d5",
+		"name": "Municipio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22999283"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Municipio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigoUF\": 1,\r\n    \"nome\": \"OLINDA\",\r\n    \"status\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASEURL8080}}/municipio"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Municipio",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigoMunicipio\": 1,\r\n    \"nome\": \"SANTOS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASEURL8080}}/municipio"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Municipios por Parametros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL8080}}/municipio?nome=ouro preto",
+					"host": [
+						"{{BASEURL8080}}"
+					],
+					"path": [
+						"municipio"
+					],
+					"query": [
+						{
+							"key": "codigoMunicipio",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "codigoUF",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "nome",
+							"value": "ouro preto"
+						},
+						{
+							"key": "status",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

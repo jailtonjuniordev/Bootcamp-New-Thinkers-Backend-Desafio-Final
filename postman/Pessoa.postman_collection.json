@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "ebead19e-ccbb-4d67-9c1b-ee8b8debb118",
+		"name": "Pessoa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22999283"
+	},
+	"item": [
+		{
+			"name": "Endereço",
+			"item": [
+				{
+					"name": "Cadastrar novo Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{BASEURL8080}}/pessoaendereco/add"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Endereço",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{BASEURL8080}}/pessoa/endereco/del"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cadastrar Pessoa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"JOÃO ANDRADE\",\r\n    \"sobrenome\": \"DOS REIS\",\r\n    \"idade\": 12,\r\n    \"login\": \"joao.reis.dois\",\r\n    \"senha\": \"senha\",\r\n    \"status\": 1,\r\n    \"enderecos\": [\r\n        {\r\n            \"codigoBairro\": 1,\r\n            \"nomeRua\": \"RUA A\",\r\n            \"numero\": \"123\",\r\n            \"complemento\": \"MINHA CASA UM\",\r\n            \"cep\": \"11111-678\"\r\n        },\r\n        {\r\n            \"codigoBairro\": 1,\r\n            \"nomeRua\": \"RUA B\",\r\n            \"numero\": \"456\",\r\n            \"complemento\": \"MINHA CASA DOIS\",\r\n            \"cep\": \"22222-680\"\r\n        },\r\n        {\r\n            \"codigoBairro\": 1,\r\n            \"nomeRua\": \"RUA C\",\r\n            \"numero\": \"456\",\r\n            \"complemento\": \"MINHA CASA TRÊS\",\r\n            \"cep\": \"33333-680\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASEURL8080}}/pessoa"
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Pessoa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigoPessoa\": 1,\r\n    \"sobrenome\": \"DOS REIS\",\r\n    \"idade\": 12,\r\n    \"login\": \"joao.reis.dois\",\r\n    \"senha\": \"senha\",\r\n    \"status\": 2,\r\n    \"enderecos\": [\r\n        {\r\n            \"codigoEndereco\": 2,\r\n            \"codigoPessoa\": 1,\r\n            \"codigoBairro\": 1,\r\n            \"nomeRua\": \"RUA ALTERADA B\",\r\n            \"numero\": \"456\",\r\n            \"complemento\": \"MINHA CASA DOIS\",\r\n            \"cep\": \"22222-680\"\r\n        },\r\n        {\r\n            \"codigoEndereco\": 3,\r\n            \"codigoPessoa\": 1,\r\n            \"codigoBairro\": 1,\r\n            \"nomeRua\": \"RUA ALTERADA C\",\r\n            \"numero\": \"456\",\r\n            \"complemento\": \"MINHA CASA TRÊS\",\r\n            \"cep\": \"33333-680\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{BASEURL8080}}/pessoa"
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Pessoa por Parametros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL8080}}/pessoa?codigoPessoa=1",
+					"host": [
+						"{{BASEURL8080}}"
+					],
+					"path": [
+						"pessoa"
+					],
+					"query": [
+						{
+							"key": "codigoPessoa",
+							"value": "1"
+						},
+						{
+							"key": "login",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
