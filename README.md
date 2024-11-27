@@ -49,12 +49,14 @@ foi desenvolvida utilizando **Spring Boot**, com integração para banco de dado
 
 2. Configure as variáveis de ambiente no arquivo `.env` para conexão com o banco Oracle.
 
-3. Compile e execute o projeto:
+3. Ajuste as configurações do JPA em relação ao banco de dados como preferir no arquivo `application.yml` 
+
+4. Compile e execute o projeto:
    ```bash
    mvn spring-boot:run
    ```
 
-4. Utilize o Postman para interagir com os endpoints disponíveis.
+5. Utilize o Postman para interagir com os endpoints disponíveis.
 
 ---
 
